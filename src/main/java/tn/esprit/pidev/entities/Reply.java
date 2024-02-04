@@ -1,27 +1,27 @@
 package tn.esprit.pidev.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-//@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter
 @Setter
-@Document(collection ="Reply")
+@Document(collection = "Reply")
 public class Reply {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private String idReply;
     private int idUser;
     private int recommondations;
-    private String idPost;
     private boolean visibility;
 
+    private String postId; // Store the id of the Post
 
+    @DBRef // Use DBRef annotation to store a reference to Post
+    private Post post;
 
 }
