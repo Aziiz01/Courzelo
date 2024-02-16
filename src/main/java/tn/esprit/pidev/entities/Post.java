@@ -20,6 +20,8 @@ public class Post {
     @Id
     private String idPost;
     private String titre;
+    private String context;
+    private float rating;
     private String imageUrl;
     private String idUser;
     @DBRef // Use DBRef annotation to store a reference to Discussion

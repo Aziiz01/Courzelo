@@ -16,6 +16,7 @@ public class Reply {
     @Id
     private String idReply;
     private int idUser;
+    private String context;
     private int recommondations;
     private boolean visibility;
 

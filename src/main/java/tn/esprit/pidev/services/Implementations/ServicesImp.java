@@ -2,8 +2,14 @@ package tn.esprit.pidev.services.Implementations;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import tn.esprit.pidev.controllers.CustomBotController;
+import tn.esprit.pidev.dto.ChatGPTRequest;
+import tn.esprit.pidev.dto.ChatGptResponse;
 import tn.esprit.pidev.entities.Discussion;
 import tn.esprit.pidev.entities.Post;
 import tn.esprit.pidev.entities.Reply;
@@ -21,6 +27,9 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class ServicesImp implements IService {
+    private final RestTemplate template;
+    private static final Logger logger = LoggerFactory.getLogger(CustomBotController.class); // Declare logger
+
 
     @Autowired
     private ReplyRepository replyRepository;
@@ -38,13 +47,22 @@ public class ServicesImp implements IService {
 
     @Override
     public Reply addReply(Reply reply) {
-        return replyRepository.save(reply);
+        String reponse = chat(reply.getContext());
+        if ("valid".equals(reponse)) {
+            return replyRepository.save(reply);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Post addPost(Post post) {
-        return postRepository.save(post);
-    }
+        String reponse = chat(post.getContext());
+        if ("valid".equals(reponse)) {
+            return postRepository.save(post);
+        } else {
+            return null;
+        }    }
 
     @Override
     public Article addArticle(Article article) {
@@ -159,27 +177,33 @@ public class ServicesImp implements IService {
         Optional<Post> existingPost = postRepository.findById(id);
 
         if (existingPost.isPresent()) {
-            Post originalPost = existingPost.get();
+            String reponse = chat(updatedPost.getContext());
+            if ("valid".equals(reponse)) {
+                Post originalPost = existingPost.get();
 
-            // Update only the fields that are not null in the updatedPost
-            if (updatedPost.getTitre() != null) {
-                originalPost.setTitre(updatedPost.getTitre());
-            }
-            if (updatedPost.getImageUrl() != null) {
-                originalPost.setImageUrl(updatedPost.getImageUrl());
-            }
-            if (updatedPost.getIdUser() != null) {
-                originalPost.setIdUser(updatedPost.getIdUser());
-            }
-            if (updatedPost.getDiscussion() != null) {
-                originalPost.setDiscussion(updatedPost.getDiscussion());
-            }
-            if (updatedPost.getReplies() != null) {
-                originalPost.setReplies(updatedPost.getReplies());
+                // Update only the fields that are not null in the updatedPost
+                if (updatedPost.getTitre() != null) {
+                    originalPost.setTitre(updatedPost.getTitre());
+                }
+                if (updatedPost.getImageUrl() != null) {
+                    originalPost.setImageUrl(updatedPost.getImageUrl());
+                }
+                if (updatedPost.getIdUser() != null) {
+                    originalPost.setIdUser(updatedPost.getIdUser());
+                }
+                if (updatedPost.getDiscussion() != null) {
+                    originalPost.setDiscussion(updatedPost.getDiscussion());
+                }
+                if (updatedPost.getReplies() != null) {
+                    originalPost.setReplies(updatedPost.getReplies());
+                }
+
+                // Save the updated post
+                return postRepository.save(originalPost);
+            } else {
+                return null;
             }
 
-            // Save the updated post
-            return postRepository.save(originalPost);
         }
 
         return null; // Handle the case where the post with the given id doesn't exist
@@ -208,6 +232,8 @@ public class ServicesImp implements IService {
         Optional<Reply> existingReply = replyRepository.findById(id);
 
         if (existingReply.isPresent()) {
+            String reponse = chat(updatedReply.getContext());
+            if ("valid".equals(reponse)) {
             Reply originalReply = existingReply.get();
 
             // Update only the fields that are not null in the updatedReply
@@ -223,7 +249,11 @@ public class ServicesImp implements IService {
 
             // Save the updated reply
             return replyRepository.save(originalReply);
+        } else {
+                return null;
+            }
         }
+
 
         return null; // Handle the case where the reply with the given id doesn't exist
     }
@@ -235,6 +265,17 @@ public class ServicesImp implements IService {
             return true;
         }
         return false; // Handle the case where the reply with the given id doesn't exist
+    }
+
+
+    public String chat(String prompt) {
+        try {
+            ChatGPTRequest request = new ChatGPTRequest("gpt-3.5-turbo", prompt); // Assuming model is defined elsewhere
+            ChatGptResponse chatGptResponse = template.postForObject("https://api.openai.com/v1/chat/completions", request, ChatGptResponse.class);
+            return chatGptResponse.getChoices().get(0).getMessage().getContent();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
