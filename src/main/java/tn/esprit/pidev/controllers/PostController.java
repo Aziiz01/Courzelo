@@ -9,7 +9,7 @@ import tn.esprit.pidev.services.Interfaces.IService;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/post")
 public class PostController {

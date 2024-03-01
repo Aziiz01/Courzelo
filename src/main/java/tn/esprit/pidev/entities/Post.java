@@ -24,8 +24,8 @@ public class Post {
     private float rating;
     private String imageUrl;
     private String idUser;
-    @DBRef // Use DBRef annotation to store a reference to Discussion
-    private Discussion discussion;
+    private String articleId;
+
     @DBRef
     private List<Reply> replies;
     private Date createdAt;

@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -17,8 +18,12 @@ import java.util.List;
 public class Article {
     @Id
     private String idArticle;
+    private String titre;
     private int score;
     private String category;
+    private String createdBy;
+    private Date createdAt;
     @DBRef
-    private List<Discussion> discussions;
+    private List<Post> posts;
+    private String userId;
 }

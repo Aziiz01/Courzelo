@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +21,10 @@ public class Reply {
     private String context;
     private int recommondations;
     private boolean visibility;
+    private String postId;
+    @DBRef
+    private List<Re_reply> re_replies;
 
-    private String postId; // Store the id of the Post
 
-    @DBRef // Use DBRef annotation to store a reference to Post
-    private Post post;
 
 }

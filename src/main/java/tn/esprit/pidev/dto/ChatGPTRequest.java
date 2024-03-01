@@ -27,7 +27,7 @@ public class ChatGPTRequest {
                 "**Based on your analysis, respond with one of the following:**\n" +
                 "\n" +
                 "- **\"valid\"** if the text and context are free from harmful elements.\n" +
-                "- **\"not valid\"** if the text or context contains any of the identified harmful elements).\n" +
+                "- **\"not valid\"** if the text or context contains any of the identified harmful elements.\n" +
                 "\n" +
                 "**Remember to consider the overall tone and sentiment of the text, as well as any cultural nuances that might be relevant.**\n" +
                 "\n" +
@@ -35,9 +35,9 @@ public class ChatGPTRequest {
                 "\n" +
                 "**USER_INPUT:** You're such an idiot! I'm going to beat you up if you keep talking like that.\n" +
                 "\n" +
-                "**CONTEXT:** The user is responding to a disagreement in an online forum but with threatening tone and agressive language.\n" +
+                "**CONTEXT:** The user is responding to a disagreement in an online forum but with threatening tone and aggressive language.\n" +
                 "\n" +
-                "**RESPONSE:** not valid (Offensive language and threat of violence)"));
+                "**RESPONSE:** not valid "));
         this.messages.add(new Message("user",prompt));
     }
 }
