@@ -18,7 +18,6 @@ import tn.esprit.pidev.services.Implementations.MatiereException;
 import tn.esprit.pidev.services.Interfaces.ICoursService;
 import tn.esprit.pidev.services.Interfaces.IMatiereService;
 
-
 import java.io.File;
 
 import tn.esprit.pidev.repositories.MatiereRepository;
@@ -49,12 +48,17 @@ public class CoursController {
         @Autowired
         CoursRepository coursRepository;
 
-        @PostMapping("/addCours")
+       /* @PostMapping("/addCours")
         private Cours addCours(@RequestBody Cours cours) {
                 return iCoursService.addCours(cours);
-        }
+        }*/
+       @PostMapping("/addCours/{id_matiere}")
+       private Cours addCours(@RequestBody Cours cours, @PathVariable String id_matiere) {
+           return iCoursService.addCours(cours, id_matiere);
+       }
 
-        @PutMapping("/updateCours/{id_cours}")
+
+    @PutMapping("/updateCours/{id_cours}")
         public Cours updateCours(@PathVariable String id_cours,@RequestBody Cours cours){
                 return iCoursService.updateCours(id_cours,cours);
         }
@@ -67,7 +71,9 @@ public class CoursController {
                 iCoursService.deleteCours(id_cours);
         }
 
-        @GetMapping("/findAllByNomCour")
+
+
+    @GetMapping("/findAllByNomCour")
         public List<Cours> findAllByNomCours(String nomCours) {
                 return iCoursService.findAllByNomCours(nomCours);
         }
@@ -84,7 +90,7 @@ public class CoursController {
            log.info("File uploaded successfully");
            return ResponseEntity.ok().body("File uploaded successfully: " + fileName); // Renvoyer le nom du fichier stocké
        }
-       
+
     @PostMapping("/uploadRessource/{id}")
     public ResponseEntity<String> storeFileRessource(@RequestParam("file") MultipartFile file, @PathVariable("id") String idRessource) {
         String fileName = iCoursService.storeFileRessource(file, idRessource); // Utilisez correctement la méthode storeFile

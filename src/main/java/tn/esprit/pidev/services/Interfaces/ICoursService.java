@@ -10,8 +10,8 @@ import tn.esprit.pidev.entities.Ressource;
 import java.util.List;
 
 public interface ICoursService {
-    public Cours addCours(Cours c);
-    public Cours updateCours(String idCours,Cours cours);
+    public Cours addCours(Cours c, String id_matiere) ;
+    public Cours updateCours(String id_cours, Cours cours);
     public List<Cours> getAllCourse();
     public Cours getCoursById(String id_cours);
     public void deleteCours(String id_cours);

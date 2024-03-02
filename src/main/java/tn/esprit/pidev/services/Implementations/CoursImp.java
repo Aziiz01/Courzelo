@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.pidev.entities.Cours;
+import tn.esprit.pidev.entities.Matiere;
 import tn.esprit.pidev.entities.Ressource;
 import tn.esprit.pidev.repositories.CoursRepository;
+import tn.esprit.pidev.repositories.MatiereRepository;
 import tn.esprit.pidev.repositories.RessourceRepository;
 import tn.esprit.pidev.services.Interfaces.ICoursService;
 
@@ -35,13 +37,13 @@ public class CoursImp implements ICoursService {
 
     @Autowired
     private CoursRepository coursRepository;
-    /*@Autowired
-    private MatiereRepository matiereRepository;*/
+    @Autowired
+    private MatiereRepository matiereRepository;
     @Autowired
     private RessourceRepository ressourceRepository;
 
 
-  @Override
+ /* @Override
   public Cours addCours(Cours c) {
       String idc = RandomStringUtils.randomAlphabetic(10);
       c.setId_cours(idc);
@@ -55,7 +57,30 @@ public class CoursImp implements ICoursService {
       List<Ressource> ressourceList = c.getRessourceList();
       ressourceRepository.saveAll(ressourceList);
       return coursRepository.save(c);
-  }
+  }*/
+
+ @Override
+ public Cours addCours(Cours c, String id_matiere) {
+     String idc = RandomStringUtils.randomAlphabetic(10);
+     c.setId_cours(idc);
+     Date date = new Date();
+     c.setDateInscription(date);
+
+     // Assigner l'ID de la matière au cours
+     Matiere matiere = new Matiere();
+     matiere.setId_matiere(id_matiere);
+     c.setMatiere(matiere);
+
+     for (Ressource ressource : c.getRessourceList()) {
+         String idRessource = RandomStringUtils.randomAlphabetic(10);
+         ressource.setIdRessource(idRessource);
+     }
+
+     List<Ressource> ressourceList = c.getRessourceList();
+     ressourceRepository.saveAll(ressourceList);
+     return coursRepository.save(c);
+ }
+
 
     @Override
     public Cours updateCours(String id_cours, Cours cours) {
@@ -81,6 +106,8 @@ public class CoursImp implements ICoursService {
             throw new RuntimeException("Cours not found with ID: " + id_cours);
         }
     }
+
+
 
     @Override
     public List<Cours> getAllCourse() {
