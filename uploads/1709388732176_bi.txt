@@ -1,0 +1,17 @@
+le data warehouse une fois chargé on peut pas la vider et
+ la remplir une autre fois.
+*Merge join est un composant semi bloquant, il a besoin que les données
+sont triées la raison pour la quelle on a ajouter sort pour trier les
+données.
+cette technique de jointure extene a gauche consiste a comparer la source
+avec la destination faire cette technique de jointure(elle prend la table
+mere qui se trouve a gauche elle prend toutes les données soit il 
+existe ou il n'existe pas.
+le conditional split (verifier ses conditions avant de faire soit l'insertion
+soit la mise a jour)
+*OLE DB Command son role c'est d'appliquer cette mise a jour(c'est un
+composant qui permet de lancer une requete sql pour une commande de 
+mise a jour)
+*Data Conversion c'est de convertir les types de données(l'encodage au
+niveau de fichier xl (en cas general ssis) n'est pa souvent le meme
+que le sql server [pour ne pas avoir un probleme de mapping].

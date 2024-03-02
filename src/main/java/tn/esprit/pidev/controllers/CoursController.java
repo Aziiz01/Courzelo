@@ -2,6 +2,7 @@ package tn.esprit.pidev.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,11 +19,13 @@ import tn.esprit.pidev.services.Interfaces.ICoursService;
 import tn.esprit.pidev.services.Interfaces.IMatiereService;
 
 
-
+import java.io.File;
 
 import tn.esprit.pidev.repositories.MatiereRepository;
 import tn.esprit.pidev.services.Interfaces.IRessourceService;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 @Slf4j
@@ -30,6 +33,8 @@ import java.util.Optional;
 @RequestMapping("/cours")
 @CrossOrigin("http://localhost:8089")
 public class CoursController {
+        @Value("${file.upload-dir}")
+        private String uploadDir;
 
         @Autowired
         ICoursService iCoursService;
@@ -70,23 +75,25 @@ public class CoursController {
         public List<Cours> findAllByOrderByDateInscriptionDesc() {
                 return iCoursService.findAllByOrderByDateInscriptionDesc();
         }
-        @PostMapping("/upload/{id}")
-        public ResponseEntity<String> handleFileUpload(@RequestParam("photo") MultipartFile file, @PathVariable("id") String courId) {
-                String fileName = iCoursService.storeFile(file,courId);
-                Cours c=coursRepository.findById(courId).get();
-                c.setPhoto(fileName);
 
-                log.info("bien ajoutée");
-                return ResponseEntity.ok().body(fileName);
-        }
-        @PostMapping("/uploadRessource/{id}")
-        public ResponseEntity<String>  storeFileRessource(@RequestParam("photo") MultipartFile file,@PathVariable("id") String idRessource) {
-                String fileName = iCoursService.storeFile(file,idRessource);
-                Ressource r=ressourceRepository.findById(idRessource).get();
-                r.setPhoto(fileName);
-                log.info("bien ajoutée");
-                return ResponseEntity.ok().body(fileName);
-        }
+       @PostMapping("/upload/{id}")
+       public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable("id") String courId) {
+           String fileName = iCoursService.storeFile(file, courId); // Utilisez correctement la méthode storeFile
+           Cours c = coursRepository.findById(courId).orElseThrow(() -> new RuntimeException("Cours not found with ID: " + courId));
+           c.setPhoto(fileName);
+           log.info("File uploaded successfully");
+           return ResponseEntity.ok().body("File uploaded successfully: " + fileName); // Renvoyer le nom du fichier stocké
+       }
+       
+    @PostMapping("/uploadRessource/{id}")
+    public ResponseEntity<String> storeFileRessource(@RequestParam("file") MultipartFile file, @PathVariable("id") String idRessource) {
+        String fileName = iCoursService.storeFileRessource(file, idRessource); // Utilisez correctement la méthode storeFile
+        Ressource r = ressourceRepository.findById(idRessource).orElseThrow(() -> new RuntimeException("Ressource not found with ID: " + idRessource));
+        r.setPhoto(fileName);
+        log.info("File uploaded successfully");
+        return ResponseEntity.ok().body("File uploaded successfully: " + fileName); // Renvoyer le nom du fichier stocké
+    }
+
         @GetMapping("/download/{fileName:.+}")
         public ResponseEntity<Resource> downloadFile(@PathVariable String fileName) {
                 Resource resource = iCoursService.loadFileAsResource(fileName);

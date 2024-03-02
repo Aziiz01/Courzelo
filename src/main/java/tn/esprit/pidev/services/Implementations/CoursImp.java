@@ -120,7 +120,7 @@ public class CoursImp implements ICoursService {
     }
 
     @Override
-    public String storeFile(MultipartFile file, String idCour) {
+    public String storeFile(MultipartFile file, String id_cours) {
         String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
         String newFileName = generateNewFileName(originalFileName);
 
@@ -134,7 +134,7 @@ public class CoursImp implements ICoursService {
             Path filePath = uploadPath.resolve(newFileName);
             Files.copy(file.getInputStream(), filePath);
 
-            Cours cours = coursRepository.findById(idCour).orElseThrow(() -> new RuntimeException("Cour not found with id: " + idCour));
+            Cours cours = coursRepository.findById(id_cours).orElseThrow(() -> new RuntimeException("Cour not found with id: " + id_cours));
             cours.setPhoto(newFileName);
             coursRepository.save(cours);
 
