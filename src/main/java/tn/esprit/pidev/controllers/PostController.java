@@ -19,9 +19,22 @@ public class PostController {
     public Post addPost (@RequestBody Post post) {
         return iService.addPost(post);
     }
+    @PostMapping(value = "/voteUp/{id}/{userId}")
+    public void voteUp(@PathVariable String id,@PathVariable String userId){
+        iService.voteUpPost(id,userId);
+    }
+    @PostMapping(value = "/voteDown/{id}/{userId}")
+    public void voteDown(@PathVariable String id,@PathVariable String userId){
+        iService.voteDownPost(id,userId);
+    }
     @GetMapping("/getAll")
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = iService.getAllPosts();
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
+    @GetMapping("/by/{id}")
+    public ResponseEntity<List<Post>> getPostsByArticle(@PathVariable String id) {
+        List<Post> posts = iService.getPostsByArticle(id);
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
@@ -31,7 +44,10 @@ public class PostController {
         return post.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
+    @GetMapping("/followed/{userId}")
+    public List<Post> getFollowedPostsByUserId(@PathVariable String userId) {
+        return iService.getFollowedPostsByUserId(userId);
+    }
     @PutMapping("/update/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable String id, @RequestBody Post updatedPost) {
         Post updated = iService.updatePost(id, updatedPost);
@@ -50,5 +66,25 @@ public class PostController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/followPost/{idPost}/{idUser}")
+    public void followPost(@PathVariable String idPost, @PathVariable String idUser) {
+        iService.followPost(idPost, idUser);
+    }
+
+    @PostMapping("/followArticle/{idArticle}/{idUser}")
+    public void followArticle(@PathVariable String idArticle, @PathVariable String idUser) {
+        iService.followArticle(idArticle, idUser);
+    }
+
+    @PostMapping("/unfollowPost/{idPost}/{idUser}")
+    public void unfollowPost(@PathVariable String idPost, @PathVariable String idUser) {
+        iService.unfollowPost(idPost, idUser);
+    }
+
+    @PostMapping("/unfollowArticle/{idArticle}/{idUser}")
+    public void unfollowArticle(@PathVariable String idArticle, @PathVariable String idUser) {
+        iService.unfollowArticle(idArticle, idUser);
     }
 }

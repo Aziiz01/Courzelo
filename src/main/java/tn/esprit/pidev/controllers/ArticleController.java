@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.pidev.entities.Article;
+import tn.esprit.pidev.entities.Post;
 import tn.esprit.pidev.services.Interfaces.IService;
 
 import java.util.List;
@@ -17,6 +18,19 @@ public class ArticleController {
     @Autowired
     private IService iService;
 
+    @PostMapping(value = "/voteUp/{id}/{userId}")
+    public void voteUp(@PathVariable String id, @PathVariable String userId){
+        iService.voteUpArticle(id, userId);
+    }
+    @PostMapping(value = "/voteDown/{id}/{userId}")
+    public void voteDown(@PathVariable String id, @PathVariable String userId){
+        iService.voteDownArticle(id,userId);
+    }
+
+    @GetMapping("/followed/{userId}")
+    public List<Post> getFollowedArticlesByUserId(@PathVariable String userId) {
+        return iService.getFollowedArticlesByUserId(userId);
+    }
     @PostMapping("/add")
     public ResponseEntity<Article> addArticle(@RequestBody Article article) {
         Article addedArticle = iService.addArticle(article);

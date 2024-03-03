@@ -1,11 +1,14 @@
 package tn.esprit.pidev.services.Implementations;
 
+import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import tn.esprit.pidev.controllers.CustomBotController;
@@ -31,7 +34,8 @@ import java.util.Optional;
 public class ServicesImp implements IService {
     private final RestTemplate template;
     private static final Logger logger = LoggerFactory.getLogger(CustomBotController.class); // Declare logger
-
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private ReplyRepository replyRepository;
@@ -46,10 +50,15 @@ public class ServicesImp implements IService {
 
 
 
-    // Other methods you have in the class...
+    @EventListener(ApplicationReadyEvent.class)
+    public void triggerMail() throws MessagingException {
+        emailService.sendSimpleEmail("aziznacibben@gmail.com",
+                "This is email body",
+                "This is email subject");
 
+    }
     @Override
-    public Reply addReply(Reply reply) {
+    public Reply addReply(Reply reply) throws MessagingException {
         // Get the post ID from the reply
         String postId = reply.getPostId();
 
@@ -68,6 +77,7 @@ public class ServicesImp implements IService {
 
         // Save the post (which will cascade save the associated reply)
         postRepository.save(post);
+        triggerMail();
 
         return replyRepository.save(reply);
     }
@@ -128,7 +138,7 @@ public class ServicesImp implements IService {
             Article originalArticle = existingArticle.get();
 
             // Update only the fields that are not null in the updatedArticle
-            if (updatedArticle.getScore() != 0) {
+            if (updatedArticle.getScore() != null) {
                 originalArticle.setScore(updatedArticle.getScore());
             }
             if (updatedArticle.getCategory() != null) {
@@ -166,7 +176,6 @@ public class ServicesImp implements IService {
     public Optional<Post> getPostById(String id) {
         return postRepository.findById(id);
     }
-
     @Override
     public Post updatePost(String id, Post updatedPost) {
         Optional<Post> existingPost = postRepository.findById(id);
@@ -237,6 +246,11 @@ public class ServicesImp implements IService {
     }
 
     @Override
+    public List<Post> getPostsByArticleId(String articleId) {
+        return postRepository.getPostsByArticleId(articleId);
+    }
+
+    @Override
     public Reply updateReply(String id, Reply updatedReply) {
         Optional<Reply> existingReply = replyRepository.findById(id);
 
@@ -303,6 +317,132 @@ public class ServicesImp implements IService {
 
         return null; // Handle the case where the reply with the given id doesn't exist    }
     }
+
+    @Override
+    public void followPost(String idPost, String idUser) {
+        Optional<Post> optionalPost = postRepository.findById(idPost);
+
+        if (optionalPost.isPresent()) {
+            Post post = optionalPost.get();
+            if (post.getFollowedBy() == null) {
+                post.setFollowedBy(new ArrayList<>());
+            }
+            // Check if the userId is not already in the followedBy list to avoid duplicates
+            if (!post.getFollowedBy().contains(idUser)) {
+                post.getFollowedBy().add(idUser);
+                postRepository.save(post);
+            }
+        } else {
+            // Handle the case where the Post with the given idPost doesn't exist
+            throw new EntityNotFoundException("Post not found with id: " + idPost);
+        }
+    }
+    @Override
+    public List<Post> getFollowedPostsByUserId(String userId) {
+        return postRepository.getFollowedPostsByUserId(userId);
+    }
+    @Override
+    public void followArticle(String idArticle,String idUser) {
+        Optional<Article> optionalPost = articleRepository.findById(idArticle);
+
+        if (optionalPost.isPresent()) {
+            Article a = optionalPost.get();
+            if (a.getFollowedBy() == null) {
+                a.setFollowedBy(new ArrayList<>());
+            }
+            // Check if the userId is not already in the followedBy list to avoid duplicates
+            if (!a.getFollowedBy().contains(idUser)) {
+                a.getFollowedBy().add(idUser);
+                articleRepository.save(a);
+            }
+        } else {
+            // Handle the case where the Post with the given idPost doesn't exist
+            throw new EntityNotFoundException("Article not found with id: " + idArticle);
+        }
+    }
+    @Override
+    public void unfollowPost(String idPost, String idUser) {
+        Optional<Post> optionalPost = postRepository.findById(idPost);
+
+        if (optionalPost.isPresent()) {
+            Post post = optionalPost.get();
+
+            // Remove the userId from the followedBy list if it exists
+            post.getFollowedBy().remove(idUser);
+
+            postRepository.save(post);
+        } else {
+            // Handle the case where the Post with the given idPost doesn't exist
+            throw new EntityNotFoundException("Post not found with id: " + idPost);
+        }
+    }
+    @Override
+    public void unfollowArticle(String idArticle, String idUser) {
+        Optional<Article> optionalPost = articleRepository.findById(idArticle);
+
+        if (optionalPost.isPresent()) {
+            Article a = optionalPost.get();
+
+            // Remove the userId from the followedBy list if it exists
+            a.getFollowedBy().remove(idUser);
+
+            articleRepository.save(a);
+        } else {
+            // Handle the case where the Post with the given idPost doesn't exist
+            throw new EntityNotFoundException("Article not found with id: " + idArticle);
+        }
+    }
+
+    @Override
+    public List<Post> getFollowedArticlesByUserId(String userId) {
+        return articleRepository.getFollowedArticlesByUserId(userId);
+    }
+
+    @Override
+    public void voteUpPost(String idPost, String userId) {
+        Post p = postRepository.findById(idPost) .orElseThrow(() -> new EntityNotFoundException("Post not found with id: " + idPost));;
+        if (p.getRating() == null) {
+            p.setRating(new ArrayList<>());
+        }
+        // Check if the userId is not already in the followedBy list to avoid duplicates
+        if (!p.getRating().contains(userId)) {
+            p.getRating().add(userId);
+            postRepository.save(p);
+        }
+    }
+
+    @Override
+    public void voteDownPost(String idPost, String userId) {
+        Post p = postRepository.findById(idPost) .orElseThrow(() -> new EntityNotFoundException("Post not found with id: " + idPost));;
+        // Remove the userId from the followedBy list if it exists
+        p.getRating().remove(userId);
+
+        postRepository.save(p);
+    }
+
+    @Override
+    public void voteUpArticle(String idArticle, String userId) {
+        Article a = articleRepository.findById(idArticle).orElseThrow(() -> new EntityNotFoundException("article not found with id: " + idArticle));
+        ;
+        if (a.getScore() == null) {
+            a.setScore(new ArrayList<>());
+        }
+        // Check if the userId is not already in the followedBy list to avoid duplicates
+        if (!a.getScore().contains(userId)) {
+            a.getScore().add(userId);
+            articleRepository.save(a);
+        }
+    }
+    @Override
+    public void voteDownArticle(String idArticle, String userId) {
+        Article a = articleRepository.findById(idArticle) .orElseThrow(() -> new EntityNotFoundException("article not found with id: " + idArticle));;
+        // Remove the userId from the followedBy list if it exists
+        a.getScore().remove(userId);
+
+        articleRepository.save(a);
+
+    }
+
     @Override
     public boolean deleteReply(String id) {
         if (replyRepository.existsById(id)) {
@@ -319,6 +459,11 @@ public class ServicesImp implements IService {
             return true;
         }
         return false;    }
+
+    @Override
+    public List<Post> getPostsByArticle(String id) {
+        return postRepository.getPostsByArticleId(id);
+    }
 
 
     public String chat(String prompt) {

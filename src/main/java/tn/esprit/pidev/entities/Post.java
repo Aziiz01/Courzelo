@@ -21,11 +21,11 @@ public class Post {
     private String idPost;
     private String titre;
     private String context;
-    private float rating;
+    private List<String> rating;
     private String imageUrl;
     private String idUser;
     private String articleId;
-
+    private List<String> followedBy;
     @DBRef
     private List<Reply> replies;
     private Date createdAt;

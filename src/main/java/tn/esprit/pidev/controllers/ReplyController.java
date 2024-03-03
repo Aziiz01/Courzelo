@@ -1,5 +1,6 @@
 package tn.esprit.pidev.controllers;
 
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class ReplyController {
     @Autowired
     IService iService;
     @PostMapping(value = "/saveReply")
-    private Reply addReply(@RequestBody Reply reply) {
+    private Reply addReply(@RequestBody Reply reply) throws MessagingException {
 
       return iService.addReply(reply);
     }

@@ -19,9 +19,9 @@ public class Article {
     @Id
     private String idArticle;
     private String titre;
-    private int score;
+    private List<String> score;
     private String category;
-    private String createdBy;
+    private List<String> followedBy;
     private Date createdAt;
     @DBRef
     private List<Post> posts;
