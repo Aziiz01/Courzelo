@@ -9,6 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tn.esprit.pidev.services.Implementations.EmailService;
+import tn.esprit.pidev.services.Interfaces.EmailSenderService;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy  //activer l'aspect
@@ -18,5 +19,7 @@ public class PidevApplication {
     public static void main(String[] args) {
         SpringApplication.run(PidevApplication.class, args);
     }
+    @Autowired
+    EmailSenderService senderService;
 
 }
