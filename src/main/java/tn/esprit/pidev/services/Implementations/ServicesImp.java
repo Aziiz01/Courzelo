@@ -126,7 +126,7 @@ public class ServicesImp implements IService {
 
     @Override
     public Post addPost(Post post) throws MessagingException {
-        String response = chat(post.getTitre()+"/n"+post.getContext());
+        String response = chat(post.getContext());
         if (!response.equals("valid")) {
             return null;
         } else {
