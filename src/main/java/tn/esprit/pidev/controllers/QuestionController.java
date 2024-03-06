@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.pidev.entities.Avis;
 import tn.esprit.pidev.entities.Question;
 import tn.esprit.pidev.entities.Quiz;
+import tn.esprit.pidev.entities.UserAttempt;
 import tn.esprit.pidev.services.Interfaces.IService;
 
 import java.util.ArrayList;
@@ -61,5 +62,7 @@ public class QuestionController {
 //        }
 //        return ResponseEntity.ok(listOfQuestions);
 //    }
+
+
 }
 

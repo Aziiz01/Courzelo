@@ -33,7 +33,6 @@
         private int dureequestion;
 
         @DBRef
-        @JsonIgnore
         private Quiz quiz;
 
 

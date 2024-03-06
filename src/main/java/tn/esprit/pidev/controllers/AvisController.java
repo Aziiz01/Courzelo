@@ -1,13 +1,8 @@
 package tn.esprit.pidev.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.pidev.entities.Attempt;
 import tn.esprit.pidev.entities.Avis;
-import tn.esprit.pidev.entities.Question;
-import tn.esprit.pidev.entities.Quiz;
 import tn.esprit.pidev.services.Interfaces.IService;
 
 import java.util.List;

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tn.esprit.pidev.entities.Question;
 import tn.esprit.pidev.entities.Quiz;
+import tn.esprit.pidev.entities.UserAttempt;
 import tn.esprit.pidev.services.Interfaces.IService;
 
 import java.util.List;
@@ -64,16 +65,33 @@ public class QuizController {
         }
     }
 
-//    @Configuration
-//    public class WebMvcConfig implements WebMvcConfigurer {
-//
-//        @Override
-//        public void addCorsMappings(CorsRegistry registry) {
-//            registry.addMapping("/**")
-//                    .allowedOrigins("http://localhost:4200")
-//                    .allowedMethods("GET", "POST", "PUT", "DELETE");
-//        }
+    @Configuration
+    public class WebMvcConfig implements WebMvcConfigurer {
+
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins("http://localhost:4200")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE");
+        }
+    }
+
+    @GetMapping("/{_id}/questions")
+    public ResponseEntity<List<Question>> getQuestionsForQuiz(@PathVariable String _id) {
+        try {
+            List<Question> questions = iService.getQuestionsForQuiz(_id);
+            return ResponseEntity.ok(questions);
+        } catch (RuntimeException e) {
+            // Handle the case where the quiz is not found or any other error
+            return ResponseEntity.notFound().build();
+        }
+    }
+//    @PostMapping("/evaluate-quiz")
+//    public ResponseEntity<Integer> evaluateQuiz(@RequestBody UserAttempt userAttempt) {
+//        int score = iService.evaluateQuiz(userAttempt);
+//        return ResponseEntity.ok(score);
 //    }
+
 }
 
 
