@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ActivityComponent } from './components/activity/activity.component';
+import { ClubComponent } from './components/club/club.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { ActivityComponent } from './components/activity/activity.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    ActivityComponent
+    ActivityComponent,
+    ClubComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

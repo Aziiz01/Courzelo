@@ -12,6 +12,7 @@ export class ActivityComponent {
   activityName: string = "";
   activityAddress: string = "";
   mobile: number = 0;
+  dateOfActivity: string = ""; // Add this line
   currentActivityID = "";
 
   constructor(private activityService : ActivityService) {
@@ -26,7 +27,8 @@ export class ActivityComponent {
     const bodyData = {
       "activityName": this.activityName,
       "activityAddress": this.activityAddress,
-      "mobile": this.mobile
+      "mobile": this.mobile,
+      "dateOfActivity": this.dateOfActivity
     };
 
     this.activityService.registerActivity(bodyData).subscribe((resultData: any) => {
@@ -48,6 +50,7 @@ export class ActivityComponent {
     this.activityName = data.activityName;
     this.activityAddress = data.activityAddress;
     this.mobile = data.mobile;
+    this.dateOfActivity = data.dateOfActivity; 
     this.currentActivityID = data._id;
   }
 
@@ -55,7 +58,8 @@ export class ActivityComponent {
     const bodyData = {
       "activityName": this.activityName,
       "activityAddress": this.activityAddress,
-      "mobile": this.mobile
+      "mobile": this.mobile,
+      "dateOfActivity": this.dateOfActivity
     };
 
     this.activityService.updateActivity(this.currentActivityID, bodyData).subscribe((resultData: any) => {
@@ -82,11 +86,12 @@ export class ActivityComponent {
       this.clearForm();
     });
   }
-
+  
   clearForm() {
     this.activityName = '';
     this.activityAddress = '';
     this.mobile = 0;
+    this.dateOfActivity = "";
     this.currentActivityID = '';
   }
 }

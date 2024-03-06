@@ -1,0 +1,49 @@
+<div class="container mt-4" >
+    <h1>Club Registation</h1>
+    <div class="card">
+           
+<form>
+   
+    <div class="form-group">
+      <label >club Name</label>
+      <input type="text"  [(ngModel)]="clubName"  [ngModelOptions]="{standalone: true}" class="form-control" id="clubName" name="clubName" placeholder="Enter Name">
+    </div>
+    
+ 
+
+      <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Submit</button>
+  </form>
+</div>
+</div>
+
+
+<div>
+ 
+    <div class="container mt-4" >
+ 
+        <h1>club Table</h1>
+    <table class="table">
+        <thead>     
+        <tr>
+
+            <th scope="col">Name</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ClubItem of ClubArray">
+           
+            <td>{{ClubItem.clubName}}</td>
+           
+ 
+            <td>
+                <button type="button" class="btn btn-success" (click)="setUpdate(ClubItem)">Edit</button>
+                <button type="button" class="btn btn-danger" (click)="setDelete(ClubItem)">Delete</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+ 
+ 
+    </div>

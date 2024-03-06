@@ -19,6 +19,11 @@
         <input type="text" [(ngModel)]="mobile" [ngModelOptions]="{standalone: true}" class="form-control" id="mobile" name="text" placeholder="Enter Mobile">
       </div>
 
+      <div class="form-group">
+        <label for="dateOfActivity">Date of Activity</label>
+        <input type="text" class="form-control" [(ngModel)]="dateOfActivity" name="dateOfActivity" placeholder="dd-MM-yyyy">
+      </div>
+
       <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Submit</button>
   </form>
 </div>
@@ -37,6 +42,7 @@
             <th scope="col">Name</th>
             <th scope="col">Address</th>
             <th scope="col">Mobile</th>
+            <th scope="col">Date</th>
             <th scope="col">Option</th>
           </tr>
         </thead>
@@ -46,6 +52,7 @@
             <td>{{ActivityItem.activityName}}</td>
             <td>{{ActivityItem.activityAddress }}</td>
             <td>{{ActivityItem.mobile }}</td>
+            <td>{{ActivityItem.dateOfActivity }}</td>
  
             <td>
                 <button type="button" class="btn btn-success" (click)="setUpdate(ActivityItem)">Edit</button>

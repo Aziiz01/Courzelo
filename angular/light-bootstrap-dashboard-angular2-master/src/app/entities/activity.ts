@@ -3,4 +3,5 @@ export interface Activity {
     activityName?: string;
     activityAddress?: string;
     mobile?: string;
+    dateOfActivity?:string;
 }

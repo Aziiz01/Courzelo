@@ -60,16 +60,43 @@
                       
                      
                     </div>
+                    
                     <nav class="td-page-navigation">
                         <ul class="pagination">
-                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a class="active" href="#">2</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                            <li class="pagination-arrow"><a (click)="setCurrentPage(currentPage - 1)" [class.disabled-link]="currentPage === 1"><i class="fa fa-angle-double-left"></i></a></li>
+                              <li *ngFor="let page of totalPagesArray()">
+            <a (click)="setCurrentPage(page)" [class.active]="currentPage === page">{{ page }}</a>
+        </li>
+                            
+                            
+                            <li class="pagination-arrow"><a (click)="setCurrentPage(currentPage + 1)" [class.disabled-link]="currentPage === totalPages">
+                <i class="fa fa-angle-double-right"></i>
+            </a>
+        </li>
                         </ul>
-                    </nav>
+                    </nav> 
+
+
+
+                <!-- Pagination
+<div class="vs-pagination mt-60">
+    <ul>
+        <li>
+            <a (click)="setCurrentPage(currentPage - 1)" [class.disabled-link]="currentPage === 1">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+        </li>
+        <li *ngFor="let page of totalPagesArray()">
+            <a (click)="setCurrentPage(page)" [class.active]="currentPage === page">{{ page }}</a>
+        </li>
+        <li>
+            <a (click)="setCurrentPage(currentPage + 1)" [class.disabled-link]="currentPage === totalPages">
+                <i class="fa fa-angle-double-right"></i>
+            </a>
+        </li>
+    </ul>
+  </div> -->
+                
                 </div>
                 
                 <div class="col-lg-4 order-lg-1 col-12">

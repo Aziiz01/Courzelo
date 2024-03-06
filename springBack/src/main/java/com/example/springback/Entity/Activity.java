@@ -1,4 +1,5 @@
 package com.example.springback.Entity;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import org.springframework.data.annotation.Id;
@@ -20,12 +21,15 @@ public class Activity {
 
     private Date dateOfActivity;
 
+    //private Club club;
+
     public Activity(String _id, String activityName, String activityAddress, String mobile, Date dateOfActivity) {
         this._id = _id;
         this.activityName = activityName;
         this.activityAddress = activityAddress;
         this.mobile = mobile;
         this.dateOfActivity = dateOfActivity;
+
     }
 
     public Activity(String _id, String activityName, String activityAddress, String mobile) {
@@ -43,6 +47,23 @@ public class Activity {
         this.image = image;
         this.dateOfActivity = dateOfActivity;
     }
+
+/*    public Activity(String _id, String activityName, String activityAddress, String mobile, Club club) {
+        this._id = _id;
+        this.activityName = activityName;
+        this.activityAddress = activityAddress;
+        this.mobile = mobile;
+        this.club = club;
+    }*/
+
+ /*   public Activity(String _id, String activityName, String activityAddress, String mobile, Date dateOfActivity, Club club) {
+        this._id = _id;
+        this.activityName = activityName;
+        this.activityAddress = activityAddress;
+        this.mobile = mobile;
+        this.dateOfActivity = dateOfActivity;
+        this.club = club;
+    }*/
 
     public Activity() {
     }
@@ -96,6 +117,28 @@ public class Activity {
         this.dateOfActivity = dateOfActivity;
     }
 
+
+   /* public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }*/
+
+   /* @Override
+    public String toString() {
+        return "Activity{" +
+                "_id='" + _id + '\'' +
+                ", activityName='" + activityName + '\'' +
+                ", activityAddress='" + activityAddress + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", image='" + image + '\'' +
+                ", dateOfActivity=" + dateOfActivity +
+                ", club=" + club +
+                '}';
+    }*/
+
     @Override
     public String toString() {
         return "Activity{" +
@@ -103,7 +146,7 @@ public class Activity {
                 ", activityName='" + activityName + '\'' +
                 ", activityAddress='" + activityAddress + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", image=" + image +
+                ", image='" + image + '\'' +
                 ", dateOfActivity=" + dateOfActivity +
                 '}';
     }

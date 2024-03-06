@@ -17,7 +17,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { ActivityComponent } from 'app/components/activity/activity.component';
-
+import { ClubComponent } from 'app/components/club/club.component';
 
 @NgModule({
   imports: [
