@@ -1,0 +1,103 @@
+
+    
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <div class="section-title mb-0 text-center">
+                    <h2 class="page-title">Activities</h2>
+                    <ul class="page-list">
+                        <li><a routerLink="" href="index.html">Home</a></li>
+                        <li>Activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb end -->
+
+    <!-- blog area start -->
+    <div class="blog-area pd-top-120 pd-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 order-lg-12">
+                    <div class="row">
+                        <div class="col-md-6"  *ngFor="let activity of activity">
+                            <div class="single-course-inner">
+                                <div class="thumb">
+                                    <img src="assets/img/course/1.png" alt="img">
+                                </div>
+                                <div class="details">
+                                    <div class="details-inner">
+                                        <div class="emt-user">
+                                            
+                                            <span class="align-self-center">{{activity.mobile}}</span>
+                                                 <br />
+                                            <span class="align-self-center">{{activity.activityAddress}}</span>
+                                          
+                                        </div>
+                                        <h6><a routerLink="/courseDetails" href="course-details.html">{{activity.activityName}}</a></h6>
+                                    </div>
+                                    <div class="emt-course-meta">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i> 4.3
+                                                    <span>(23)</span>
+                                                </div>
+                                            </div>
+                                           <!--
+                                            <div class="col-6">
+                                                <div class="price text-right">
+                                                    Price: <span>$54.00</span>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                     
+                    </div>
+                    <nav class="td-page-navigation">
+                        <ul class="pagination">
+                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a class="active" href="#">2</a></li>
+                            <li><a href="#">...</a></li>
+                            <li><a href="#">3</a></li>
+                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <div class="col-lg-4 order-lg-1 col-12">
+                    <div class="td-sidebar mt-5 mt-lg-0">
+                      <div class="widget widget_search_course">    
+                        <h4 class="widget-title">Search</h4>                               
+                        <form class="search-form single-input-inner" (ngSubmit)="searchActivities()">
+                          <input type="text" placeholder="Search here" [(ngModel)]="searchName" name="search">
+                          <button class="btn btn-base w-100 mt-3" type="submit"><i class="fa fa-search"></i> SEARCH</button>
+                        </form>
+                      </div> 
+                    </div>
+                  </div>
+                 
+            </div>
+        </div>
+    </div>
+    <!-- blog area end -->
+
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fa fa-angle-up"></i></span>
+    </div>
+    <!-- back to top area end -->
+
+
+    <!-- all plugins here -->
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/vendor.js"></script>
+    <!-- main js  -->
+    <script src="assets/js/main.js"></script>
+

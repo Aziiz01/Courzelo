@@ -1,0 +1,657 @@
+    <!-- search popup start-->
+    <div class="td-search-popup" id="td-search-popup">
+        <form action="https://solverwp.com/demo/html/edumint/index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- search popup end-->
+    <div class="body-overlay" id="body-overlay"></div>
+
+    <!-- navbar start -->
+    <div class="navbar-area">
+        <nav class="navbar navbar-area-1 navbar-area navbar-expand-lg">
+            <div class="container nav-container">
+                <div class="responsive-mobile-menu">
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#edumint_main_menu" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="logo">
+                    <a href="index.html"><img src="assets/img/logo.png" alt="img"></a>
+                </div>
+                <div class="nav-right-part nav-right-part-mobile">
+                    <a routerLink="/signin" class="signin-btn" href="signin.html">Sign In</a>
+                    <a routerLink="/signup" class="btn btn-base" href="signup.html">Sign Up</a>
+                    <a class="search-bar" href="#"><i class="fa fa-search"></i></a>
+                </div>
+                <div class="collapse navbar-collapse" id="edumint_main_menu">
+                    <ul class="navbar-nav menu-open">
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">Home</a>
+                            <ul class="sub-menu">
+                                <li><a routerLink=""  href="index-1.html">Home 01</a></li>
+                                <li><a routerLink="/home2" href="index-2.html">Home 02</a></li>
+                                <li><a routerLink="/home3" href="index-3.html">Home 03</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Course</a>
+                            <ul class="sub-menu">
+                                <li><a routerLink="/courses" href="course.html">Course</a></li>
+                                <li><a routerLink="/courseDetails" href="course-details.html">Course Details</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a routerLink="/activity" routerLinkActive="active">Activity</a></li>
+                                <li><a href="event-details.html">Event Details</a></li>
+                                <li><a href="team.html">Instructor</a></li>
+                                <li><a href="team-details.html">Instructor Details</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="signin.html">Sign In</a></li>
+                                <li><a href="signup.html">Sign Up</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Blog</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="blog-grid.html">Blog Grid</a></li>
+                                <li><a href="blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right-part nav-right-part-desktop">
+                    <a routerLink="/signin" class="signin-btn" href="signin.html">Sign In</a>
+                    <a routerLink="/signup" class="btn btn-base" href="signup.html">Sign Up</a>
+                    <a class="search-bar" href="#"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+    
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-area bg-overlay" style="background-image:url('assets/img/bg/3.png')">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <div class="section-title mb-0 text-center">
+                    <h2 class="page-title">Course Details</h2>
+                    <ul class="page-list">
+                        <li><a routerLink="" href="index.html">Home</a></li>
+                        <li>Course Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb end -->
+
+    <!-- course-single area start -->
+    <div class="course-single-area pd-top-120 pd-bottom-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="course-course-detaila-inner">
+                        <div class="details-inner">
+                            <div class="emt-user">
+                                <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
+                                <span class="align-self-center">Nancy Reyes</span>
+                            </div>
+                            <h3 routerLink="/courseDetails" class="title"><a href="course-details.html">Fox Nymphs Grab Quick-jived Waltz. Brick Quiz Whangs</a></h3>
+                        </div>
+                        <div class="thumb">
+                            <img src="assets/img/course/9.png" alt="img">
+                        </div>
+                        <div class="course-details-nav-tab text-center">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Description</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Curriculum</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">FAQ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Review</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                                <div class="course-details-content">
+                                    <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz. Quick, Baz, get my woven flax jodhpurs! "Now fax quiz Jack!" my brave ghost pled. Five quacking zephyrs jolt my wax bed. Flummoxed by job, kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad milk. A very bad quack might jinx zippy fowls. Few quips galvanized the mock jury box. Quick brown dogs jump over the lazy fox. The jay, pig, fox, zebra, and my wolves quack! Blowzy red vixens fight for a quick jump.</p>
+                                    <div class="row pt-4">
+                                        <div class="col-sm-6">
+                                            <ul class="single-list-wrap">
+                                                <li class="single-list-inner style-check-box">
+                                                    <i class="fa fa-check"></i> Metus interdum metus
+                                                </li>
+                                                <li class="single-list-inner style-check-box">
+                                                    <i class="fa fa-check"></i> Ligula cur maecenas
+                                                </li>
+                                                <li class="single-list-inner style-check-box">
+                                                    <i class="fa fa-check"></i> Fringilla nulla 
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6 mt-3 mt-sm-0">
+                                            <ul class="single-list-wrap">
+                                                <li class="single-list-inner style-check-box">
+                                                    <i class="fa fa-check"></i> Metus interdum metus
+                                                </li>
+                                                <li class="single-list-inner style-check-box">
+                                                    <i class="fa fa-check"></i> Ligula cur maecenas
+                                                </li>
+                                                <li class="single-list-inner style-check-box">
+                                                    <i class="fa fa-check"></i> Fringilla nulla 
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                                <div class="course-details-content">
+                                    <h4 class="title">Overview</h4>
+                                    <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab</p>
+                                    <div id="accordion" class="accordion-area mt-4">
+                                        <div class="card single-faq-inner style-no-border">
+                                            <div class="card-header" id="ff-one">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link" data-toggle="collapse" data-target="#f-one" aria-expanded="true" aria-controls="f-one">
+                                                        01.  What does you simply dummy in do ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-one" class="show collapse" aria-labelledby="ff-one" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    What does you dummy text of free available in market printing has industry been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card single-faq-inner style-no-border">
+                                            <div class="card-header" id="ff-two">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#f-two" aria-expanded="true" aria-controls="f-two">
+                                                        02.  What graphics dummy of free  design ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-two" class="collapse" aria-labelledby="ff-two" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    What graphics simply dummy text of free available in market printing industry has been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card single-faq-inner style-no-border">
+                                            <div class="card-header" id="ff-three">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#f-three" aria-expanded="true" aria-controls="f-three">
+                                                        03.  Why we are the best ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-three" class="collapse" aria-labelledby="ff-three" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    Why we are dummy text of free available in market printing industry has been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card single-faq-inner style-no-border">
+                                            <div class="card-header" id="ff-four">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#f-four" aria-expanded="true" aria-controls="f-four">
+                                                        04.  What industries dummy covered ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-four" class="collapse" aria-labelledby="ff-four" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    What industries text of free available in market printing industry has been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                                <div class="course-details-content">
+                                    <h4 class="title">Overview</h4>
+                                    <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab</p>
+                                    <div id="accordion-1" class="accordion-area mt-4">
+                                        <div class="card single-faq-inner style-header-bg">
+                                            <div class="card-header" id="ff-five">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link" data-toggle="collapse" data-target="#f-five" aria-expanded="true" aria-controls="f-five">
+                                                        01.  What does you simply dummy in do ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-five" class="show collapse" aria-labelledby="ff-five" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    What does you dummy text of free available in market printing has industry been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card single-faq-inner style-header-bg">
+                                            <div class="card-header" id="ff-six">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#f-six" aria-expanded="true" aria-controls="f-six">
+                                                        02.  What graphics dummy of free  design ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-six" class="collapse" aria-labelledby="ff-six" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    What graphics simply dummy text of free available in market printing industry has been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card single-faq-inner style-header-bg">
+                                            <div class="card-header" id="ff-seven">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#f-seven" aria-expanded="true" aria-controls="f-seven">
+                                                        03.  Why we are the best ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-seven" class="collapse" aria-labelledby="ff-seven" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    Why we are dummy text of free available in market printing industry has been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card single-faq-inner style-header-bg">
+                                            <div class="card-header" id="ff-eight">
+                                                <h5 class="mb-0">
+                                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#f-eight" aria-expanded="true" aria-controls="f-eight">
+                                                        04.  What industries dummy covered ?
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="f-eight" class="collapse" aria-labelledby="ff-eight" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    What industries text of free available in market printing industry has been industry's standard dummy text ever.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+                                <div class="ratings-list-inner mb-4">
+                                    <div class="row">
+                                        <div class="col-md-4 align-self-center text-center">
+                                            <div class="total-avarage-rating">
+                                                <h2>5.0</h2>
+                                                <div class="rating-inner">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <p>Rated 5 out of 3 Ratings</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="counter-label"><i class="fa fa-star"></i>5</span>
+                                                        <span class="progress-bar-inner">
+                                                            <span class="progress">
+                                                                <span class="progress-bar" role="progressbar" aria-valuenow="100"
+                                                                aria-valuemin="0" aria-valuemax="100" style="width:100%"></span>
+                                                            </span>
+                                                        </span>
+                                                        <span class="counter-count">100%</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="counter-label"><i class="fa fa-star"></i>4</span>
+                                                        <span class="progress-bar-inner">
+                                                            <span class="progress">
+                                                                <span class="progress-bar" role="progressbar" aria-valuenow="80"
+                                                                aria-valuemin="0" aria-valuemax="100" style="width:0%"></span>
+                                                            </span>
+                                                        </span>
+                                                        <span class="counter-count">0%</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="counter-label"><i class="fa fa-star"></i>3</span>
+                                                        <span class="progress-bar-inner">
+                                                            <span class="progress">
+                                                                <span class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                                aria-valuemin="0" aria-valuemax="100" style="width:0%"></span>
+                                                            </span>
+                                                        </span>
+                                                        <span class="counter-count">0%</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="counter-label"><i class="fa fa-star"></i>2</span>
+                                                        <span class="progress-bar-inner">
+                                                            <span class="progress">
+                                                                <span class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                                aria-valuemin="0" aria-valuemax="100" style="width:0%"></span>
+                                                            </span>
+                                                        </span>
+                                                        <span class="counter-count">0%</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="counter-label"><i class="fa fa-star"></i>1</span>
+                                                        <span class="progress-bar-inner">
+                                                            <span class="progress">
+                                                                <span class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                                aria-valuemin="0" aria-valuemax="100" style="width:0%"></span>
+                                                            </span>
+                                                        </span>
+                                                        <span class="counter-count">0%</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="td-sidebar">
+                        <div class="widget widget_feature">
+                            <h4 class="widget-title">Course Features</h4>                                 
+                            <ul>
+                                <li><i class="fa fa-user"></i><span>Enrolled :</span> 1200 students</li>
+                                <li><i class="fa fa-clock-o"></i><span>Duration :</span> 2 hours</li>
+                                <li><i class="fa fa-clipboard"></i><span>Lectures :</span> 8</li>
+                                <li><i class="fa fa-clone"></i><span>Categories:</span> Technology</li>
+                                <li><i class="fa fa-tags"></i><span>Tags:</span> Android, JavaScript</li>
+                                <li><i class="fa fa-clipboard"></i><span>Instructor:</span> Ethan Dean</li>
+                            </ul>
+                            <div class="price-wrap text-center">
+                                <h5>Price:<span>$54.00</span></h5>
+                                <a class="btn btn-base btn-radius" href="#">ENROLL COURSE</a>
+                            </div>
+                        </div>
+                        <div class="widget widget_catagory">
+                            <h4 class="widget-title">Trending Course</h4>                                 
+                            <div class="single-course-inner">
+                                <div class="thumb">
+                                    <img src="assets/img/course/1.png" alt="img">
+                                </div>
+                                <div class="details">
+                                    <div class="details-inner">
+                                        <div class="emt-user">
+                                            <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
+                                            <span class="align-self-center">Nancy Reyes</span>
+                                        </div>
+                                        <h6><a href="course-details.html">Fox nymphs grab quick-jived waltz. Brick quiz whangs</a></h6>
+                                    </div>
+                                    <div class="emt-course-meta">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i> 4.3
+                                                    <span>(23)</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="price text-right">
+                                                    Price: <span>$54.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center pd-top-100">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-course-inner">
+                        <div class="thumb">
+                            <img src="assets/img/course/1.png" alt="img">
+                        </div>
+                        <div class="details">
+                            <div class="details-inner">
+                                <div class="emt-user">
+                                    <span class="u-thumb"><img src="assets/img/author/1.png" alt="img"></span>
+                                    <span class="align-self-center">Nancy Reyes</span>
+                                </div>
+                                <h6><a href="course-details.html">Fox nymphs grab quick-jived waltz. Brick quiz whangs</a></h6>
+                            </div>
+                            <div class="emt-course-meta">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i> 4.3
+                                            <span>(23)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="price text-right">
+                                            Price: <span>$54.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-course-inner">
+                        <div class="thumb">
+                            <img src="assets/img/course/2.png" alt="img">
+                        </div>
+                        <div class="details">
+                            <div class="details-inner">
+                                <div class="emt-user">
+                                    <span class="u-thumb"><img src="assets/img/author/2.png" alt="img"></span>
+                                    <span class="align-self-center">Joe Powell</span>
+                                </div>
+                                <h6><a href="course-details.html">Aenean sed nibh a magna posuere tempo faucib</a></h6>
+                            </div>
+                            <div class="emt-course-meta">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i> 4.3
+                                            <span>(23)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="price text-right">
+                                            Price: <span>$54.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-course-inner">
+                        <div class="thumb">
+                            <img src="assets/img/course/3.png" alt="img">
+                        </div>
+                        <div class="details">
+                            <div class="details-inner">
+                                <div class="emt-user">
+                                    <span class="u-thumb"><img src="assets/img/author/3.png" alt="img"></span>
+                                    <span class="align-self-center">Timothy Willis</span>
+                                </div>
+                                <h6><a href="course-details.html">Praesent eu dolor eu orci vehicula euismod</a></h6>
+                            </div>
+                            <div class="emt-course-meta">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i> 4.9
+                                            <span>(73)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="price text-right">
+                                            Price: <span>$74.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- course-single area end -->
+
+    <!-- footer area start -->
+    <footer class="footer-area bg-gray">
+        <div class="footer-subscribe">
+            <div class="container">
+                <form class="footer-subscribe-inner">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="single-input-inner style-border-bottom">
+                                <input type="text" placeholder="Your Full Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="single-input-inner style-border-bottom">
+                                <input type="text" placeholder="Your Email Address">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <a class="btn btn-base" href="#">Subscribe</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget widget_contact">
+                            <h4 class="widget-title">Contact Us</h4>
+                            <ul class="details">
+                                <li><i class="fa fa-map-marker"></i> 420 Love Sreet 133/2 Street NewYork</li>
+                                <li><i class="fa fa-envelope"></i> <a href="https://solverwp.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="10797e767f3e737f7e6471736450777d71797c3e737f7d">[email&#160;protected]</a></li>
+                                <li><i class="fa fa-phone"></i> 012 345 678 9101</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget widget_nav_menu">
+                            <h4 class="widget-title">Course</h4>
+                            <ul>
+                                <li><a routerLink="/courses" href="course.html">Branding design</a></li>
+                                <li><a routerLink="/courses" href="course.html">Ui/Ux designing </a></li>
+                                <li><a routerLink="/courses" href="course.html">Make Elements</a></li>
+                                <li><a routerLink="/courses" href="course.html">Business</a></li>
+                                <li><a routerLink="/courses" href="course.html">Graphics design</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget widget_blog_list">
+                            <h4 class="widget-title">News & Blog</h4>
+                            <ul>
+                                <li>
+                                    <h6><a href="blog-details.html">Big Ideas Of Business Branding Info.</a></h6>
+                                    <span class="date"><i class="fa fa-calendar"></i>December 7, 2022</span>
+                                </li>
+                                <li>
+                                    <h6><a href="blog-details.html">Ui/Ux Ideas Of Business Branding Info.</a></h6>
+                                    <span class="date"><i class="fa fa-calendar"></i>December 7, 2022</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget widget_contact">
+                            <h4 class="widget-title">Twitter Feed</h4>
+                            <ul class="details">
+                                <li>
+                                    <i class="fa fa-twitter"></i> 
+                                    Simply dummy brand  <a href="#">https//tweets/c3l.com</a>
+                                    <div class="time">9 Hours ago</div>
+                                </li>
+                                <li>
+                                    <i class="fa fa-twitter"></i> 
+                                    Simply dummy brand  <a href="#">https//tweets/c7l.com</a>
+                                    <div class="time">9 Hours ago</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 align-self-center">
+                        <a href="index.html"><img src="assets/img/logo.png" alt="img"></a>
+                    </div>
+                    <div class="col-lg-4  col-md-6 order-lg-12 text-md-right align-self-center">
+                        <ul class="social-media mt-md-0 mt-3">
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a class="youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 order-lg-8 text-lg-center align-self-center mt-lg-0 mt-3">
+                        <p>You can always reach us on our Social Networks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fa fa-angle-up"></i></span>
+    </div>
+    <!-- back to top area end -->
+
+
+    <!-- all plugins here -->
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/vendor.js"></script>
+    <!-- main js  -->
+    <script src="assets/js/main.js"></script>

@@ -1,0 +1,20 @@
+/*--------------------------------------------------
+    ## All responsive style
+---------------------------------------------------*/
+.btn-base,
+.btn-base:hover,
+.single-list-inner.style-check-box i,
+.single-team-inner .thumb .social-wrap .social-share,
+.single-blog-inner .thumb .date,
+.social-media li a:hover,
+.footer-area-2 .footer-bottom p,
+.footer-area-2 .footer-bottom .widget_nav_menu ul li a,
+.social-wrap-inner ul li a {
+	color: #fff;
+}
+.btn:after {
+	background: #20B189;
+}
+.footer-area-2 .footer-bottom .widget_nav_menu ul li a:hover {
+	color: #fdc800;
+}
