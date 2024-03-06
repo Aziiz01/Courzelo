@@ -19,12 +19,12 @@ public class EmailService {
                                 String body
     ) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("mohamedaziz.nacib@esprit.tn");
+        message.setFrom("aziznacibben@gmail.com");
         message.setTo(toEmail);
         message.setText(body);
         message.setSubject(subject);
         mailSender.send(message);
-        System.out.println("Mail Send...");
+        System.out.println("Mail Sent...");
 
 
     }

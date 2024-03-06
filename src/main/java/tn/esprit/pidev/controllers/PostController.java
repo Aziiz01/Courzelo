@@ -1,5 +1,6 @@
 package tn.esprit.pidev.controllers;
 
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class PostController {
     @Autowired
     IService iService;
     @PostMapping(value = "/savePost")
-    public Post addPost (@RequestBody Post post) {
+    public Post addPost (@RequestBody Post post) throws MessagingException {
         return iService.addPost(post);
     }
     @PostMapping(value = "/voteUp/{id}/{userId}")
@@ -69,7 +70,7 @@ public class PostController {
     }
 
     @PostMapping("/followPost/{idPost}/{idUser}")
-    public void followPost(@PathVariable String idPost, @PathVariable String idUser) {
+    public void followPost(@PathVariable String idPost, @PathVariable String idUser) throws MessagingException{
         iService.followPost(idPost, idUser);
     }
 

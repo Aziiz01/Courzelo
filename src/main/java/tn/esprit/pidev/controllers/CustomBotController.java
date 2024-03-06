@@ -35,7 +35,6 @@ public class CustomBotController {
             return chatGptResponse.getChoices().get(0).getMessage().getContent();
         } catch (Exception e) {
             logger.error("An error occurred while generating:", e);
-
             return "An error occurred. Please try again later.";
         }
     }

@@ -12,13 +12,12 @@ import java.util.List;
 import java.util.Optional;
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/reply") // Set common parent path
+@RequestMapping("/reply")
 public class ReplyController {
     @Autowired
     IService iService;
     @PostMapping(value = "/saveReply")
-    private Reply addReply(@RequestBody Reply reply) throws MessagingException {
-
+    private Reply addReply(@RequestBody Reply reply)  {
       return iService.addReply(reply);
     }
 

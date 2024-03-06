@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IService {
-    Reply addReply(Reply reply) throws MessagingException;
+    Reply addReply(Reply reply) ;
     Re_reply addRe_reply(Re_reply re_reply);
 
-    Post addPost(Post post);
+    Post addPost(Post post) throws MessagingException;
 
     Article addArticle(Article article);
 
@@ -39,7 +39,7 @@ public interface IService {
     List<Post> getPostsByArticleId(String articleId);
     Reply updateReply(String id, Reply updatedReply);
     Re_reply updateRe_reply(String id, Re_reply updatedRe_reply);
-    void followPost(String idPost,String idUser);
+    void followPost(String idPost,String idUser) throws MessagingException;
     public List<Post> getFollowedPostsByUserId(String userId) ;
 
     void followArticle(String idArticle,String idUser);

@@ -25,6 +25,8 @@ public class Post {
     private String imageUrl;
     private String idUser;
     private String articleId;
+    @DBRef
+    private Article article;
     private List<String> followedBy;
     @DBRef
     private List<Reply> replies;
