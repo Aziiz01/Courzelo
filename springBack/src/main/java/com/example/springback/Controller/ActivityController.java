@@ -1,5 +1,6 @@
 package com.example.springback.Controller;
 import com.example.springback.Entity.Activity;
+import com.example.springback.Entity.ActivityStats;
 import com.example.springback.Service.ActivityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -130,5 +131,12 @@ public class ActivityController {
         List<Activity> searchResults = activityServices.searchByName(name);
         return ResponseEntity.ok(searchResults);
     }
+    @GetMapping("/stats")
+    public ResponseEntity<?> getActivitiesStatsByClub() {
+        List<ActivityStats> stats = activityServices.countTotalActivitiesByClub();
+        return ResponseEntity.ok(stats);
+    }
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.springback.Service;
 import com.example.springback.Entity.Activity;
+import com.example.springback.Entity.ActivityStats;
 import com.example.springback.Repo.ActivityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,5 +73,9 @@ public class ActivityServices {
     }
     public Optional<Activity> getActivitytById2(String id) {
         return repo.findById(id);
+    }
+
+    public List<ActivityStats> countTotalActivitiesByClub() {
+        return repo.countTotalActivitiesByClub();
     }
 }

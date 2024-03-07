@@ -16,6 +16,13 @@ public class Activity {
     private String activityAddress;
     private String mobile;
     private String image;
+    private int rating;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+
+    private Date dateOfActivity;
+
+    private String club;
 
     public Activity(String _id, String activityName, String activityAddress, String mobile, int rating, String club) {
         this._id = _id;
@@ -34,13 +41,7 @@ public class Activity {
         this.rating = rating;
     }
 
-    private int rating;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-
-    private Date dateOfActivity;
-
-    private String club;
 
     public Activity(String _id, String activityName, String activityAddress, String mobile, Date dateOfActivity) {
         this._id = _id;

@@ -1,12 +1,15 @@
 package com.example.springback.Repo;
 
 import com.example.springback.Entity.Activity;
+import com.example.springback.Entity.ActivityStats;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.data.mongodb.repository.Aggregation;
 public interface ActivityRepo extends MongoRepository<Activity,String> {
     List<Activity> findByActivityNameContainingIgnoreCase(String name);
+    @Aggregation("{ '$group': { '_id': '$club', 'numberOfActivities': { '$sum': 1 }, 'club': { '$first': '$club' } } }")
+    List<ActivityStats> countTotalActivitiesByClub();
 
 }
