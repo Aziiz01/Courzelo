@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivityService } from 'app/services/activity.service';
+import { NotificationService } from 'app/services/notification.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ActivityComponent {
   dateOfActivity: string = ""; // Add this line
   currentActivityID = "";
 
-  constructor(private activityService : ActivityService) {
+  constructor(private activityService : ActivityService,private notificationService: NotificationService) {
     this.getAllActivity;
   }
 
@@ -34,6 +35,7 @@ export class ActivityComponent {
     this.activityService.registerActivity(bodyData).subscribe((resultData: any) => {
       console.log(resultData);
       alert("Activity Registered Successfully");
+      //this.notificationService.showSuccess('Activity Registered Successfully');
       this.getAllActivity();
       this.clearForm();
     });

@@ -9,6 +9,7 @@ import org.bson.types.Binary; // For Binary
 import java.io.File;
 import java.io.IOException; // For IOException
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ActivityServices {
@@ -49,6 +50,10 @@ public class ActivityServices {
 
         repo.save(activities);
     }
+    public Activity save(Activity activities) {
+
+       return repo.save(activities);
+    }
     public Iterable<Activity> listAll() {
         return this.repo.findAll();
     }
@@ -65,5 +70,7 @@ public class ActivityServices {
     public List<Activity> searchByName(String name) {
         return this.repo.findByActivityNameContainingIgnoreCase(name);
     }
-
+    public Optional<Activity> getActivitytById2(String id) {
+        return repo.findById(id);
+    }
 }

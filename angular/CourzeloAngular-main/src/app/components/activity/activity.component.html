@@ -41,11 +41,16 @@
                                     <div class="emt-course-meta">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="rating">
-                                                    <i class="fa fa-star"></i> 4.3
-                                                    <span>(23)</span>
+                                                <div class="col-6">
+                                                    <div class="rating2">
+                                                        <span class="star" (click)="setRating(activity._id, 1, activity)" [ngClass]="{'filled': activity.rating >= 1}">&#9733;</span>
+                                                        <span class="star" (click)="setRating(activity._id, 2, activity)" [ngClass]="{'filled': activity.rating >= 2}">&#9733;</span>
+                                                        <span class="star" (click)="setRating(activity._id, 3, activity)" [ngClass]="{'filled': activity.rating >= 3}">&#9733;</span>
+                                                        <span class="star" (click)="setRating(activity._id, 4, activity)" [ngClass]="{'filled': activity.rating >= 4}">&#9733;</span>
+                                                        <span class="star" (click)="setRating(activity._id, 5, activity)" [ngClass]="{'filled': activity.rating >= 5}">&#9733;</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                
                                            <!--
                                             <div class="col-6">
                                                 <div class="price text-right">
@@ -96,7 +101,7 @@
         </li>
     </ul>
   </div> -->
-                
+  <div id="map" style="height: 400px; width: 100%;"></div>
                 </div>
                 
                 <div class="col-lg-4 order-lg-1 col-12">

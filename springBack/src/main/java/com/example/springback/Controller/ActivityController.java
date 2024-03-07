@@ -3,6 +3,7 @@ import com.example.springback.Entity.Activity;
 import com.example.springback.Service.ActivityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -67,6 +70,33 @@ public class ActivityController {
         activityServices.saveorUpdate(activities);
         return activities.get_id();
     }
+    @PostMapping(value = "/rating", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Activity> submitRating(@RequestBody Map<String, Object> requestData) {
+        // Get the activity ID and rating from the request body
+        String activityId = (String) requestData.get("_id");
+        Integer rating = (Integer) requestData.get("rating");
+
+        // Check if required parameters are present in the request body
+        if (activityId == null || rating == null) {
+            return ResponseEntity.badRequest().build(); // Return a 400 Bad Request response if parameters are missing
+        }
+
+        // Retrieve the activity associated with the activity ID from the database
+        Optional<Activity> optionalActivity = activityServices.getActivitytById2(activityId);
+        if (!optionalActivity.isPresent()) {
+            return ResponseEntity.notFound().build(); // Return a 404 Not Found response if the activity is not found
+        }
+
+        // Update the rating of the activity with the new rating
+        Activity activity = optionalActivity.get();
+        activity.setRating(rating);
+
+        // Save the updated activity in the database
+        Activity updatedActivity = activityServices.save(activity);
+
+        return ResponseEntity.ok(updatedActivity); // Return a 200 OK response with the updated activity
+    }
+
 
     @GetMapping(value="/getAll")
     public Iterable <Activity> getActivities()

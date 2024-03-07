@@ -17,11 +17,30 @@ public class Activity {
     private String mobile;
     private String image;
 
+    public Activity(String _id, String activityName, String activityAddress, String mobile, int rating, String club) {
+        this._id = _id;
+        this.activityName = activityName;
+        this.activityAddress = activityAddress;
+        this.mobile = mobile;
+        this.rating = rating;
+        this.club = club;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    private int rating;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 
     private Date dateOfActivity;
 
-    //private Club club;
+    private String club;
 
     public Activity(String _id, String activityName, String activityAddress, String mobile, Date dateOfActivity) {
         this._id = _id;
@@ -30,6 +49,14 @@ public class Activity {
         this.mobile = mobile;
         this.dateOfActivity = dateOfActivity;
 
+    }
+
+    public Activity(String _id, String activityName, String activityAddress, String mobile, String club) {
+        this._id = _id;
+        this.activityName = activityName;
+        this.activityAddress = activityAddress;
+        this.mobile = mobile;
+        this.club = club;
     }
 
     public Activity(String _id, String activityName, String activityAddress, String mobile) {
@@ -139,6 +166,14 @@ public class Activity {
                 '}';
     }*/
 
+    public String getClub() {
+        return club;
+    }
+
+    public void setClub(String club) {
+        this.club = club;
+    }
+
     @Override
     public String toString() {
         return "Activity{" +
@@ -148,6 +183,7 @@ public class Activity {
                 ", mobile='" + mobile + '\'' +
                 ", image='" + image + '\'' +
                 ", dateOfActivity=" + dateOfActivity +
+                ", club='" + club + '\'' +
                 '}';
     }
 }

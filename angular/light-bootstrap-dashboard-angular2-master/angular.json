@@ -105,7 +105,8 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/sass/light-bootstrap-dashboard.scss",
-              "src/assets/css/demo.css"
+              "src/assets/css/demo.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
             "assets": [
               "src/assets",

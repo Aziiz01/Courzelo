@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Activity } from '../entities/activity';
 
@@ -29,6 +29,17 @@ export class ActivityService {
   searchActivities(name: string): Observable<Activity[]> {
     return this.http.get<Activity[]>(`${this.API_URL}/search`, { params: { name } });
   }
+  submitRating(activityId: string, rating: number): Observable<any> {
+    const body = {
+      _id: activityId,
+      rating: rating
+    };
   
+    return this.http.post<any>(`${this.API_URL}/rating`, body, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 
 }

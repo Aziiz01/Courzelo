@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ActivityComponent } from './components/activity/activity.component';
 import { ClubComponent } from './components/club/club.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -25,6 +26,7 @@ import { ClubComponent } from './components/club/club.component';
     FooterModule,
     SidebarModule,
     AppRoutingModule,
+    
     
   ],
   declarations: [

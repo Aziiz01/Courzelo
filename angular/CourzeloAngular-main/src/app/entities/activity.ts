@@ -3,4 +3,6 @@ export interface Activity {
     activityName?: string;
     activityAddress?: string;
     mobile?: string;
+    rating: number;
+
 }

@@ -1,0 +1,27 @@
+.stars a.selected {
+    color: yellow; /* Changez la couleur de la star sélectionnée selon vos besoins */
+  }
+  /* .star {
+    color: gray;
+    text-decoration: none;
+  } */
+  
+  .selected {
+    color: gold;
+  }
+  .rating2 {
+    font-size: 24px;
+  }
+  
+  .star {
+    cursor: pointer;
+    color: #ccc;
+  }
+  
+  .star.filled {
+    color: #ffca28;
+  }
+  .full {
+    width: 100vw;
+    height: 100vh;
+  }
